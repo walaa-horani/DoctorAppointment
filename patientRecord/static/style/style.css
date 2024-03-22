@@ -1,0 +1,44 @@
+a{
+    text-decoration: none !important;
+}
+.form-image{
+    
+    height: 1200px;
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/360_F_630075147_hFX9sPPOcr5OmRfSsrho5dwzYcUCnmyf.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+}
+.form-patient{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid white;
+    padding: 15px;
+    width: 400px;
+    
+}
+.form-patient label{
+    display: block;
+}
+.custom-control{
+    background: transparent;
+   color:  #cccccc !important;
+    border: none !important;
+    outline: none !important;
+    width: 100%;
+   
+}
+.form-patient p{
+    color: white;
+    border-bottom: 1px solid white;
+    margin-top: 15px;
+}
+body{
+    text-transform: capitalize !important;
+}
+.buttons a{
+    margin-right: 10px !important;
+}
