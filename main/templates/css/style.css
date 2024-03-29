@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+/* ********* Template CSS *********
 :root {
     --primary: #06A3DA;
     --secondary: #F57E57;
@@ -59,12 +59,7 @@ h6,
     width: 46px;
     height: 46px;
 }
-.custom-control{
-    background: transparent !important;
-    display: flex !important;
-    
-   
-}
+
 .btn-square,
 .btn-sm-square,
 .btn-lg-square {
@@ -93,7 +88,14 @@ h6,
     bottom: 45px;
     z-index: 99;
 }
-
+.custom-control{
+    background: transparent;
+   color:  #cccccc !important;
+    border: none !important;
+    outline: none !important;
+    width: 100%;
+   
+}
 .top-shape::before {
     position: absolute;
     content: "";
@@ -327,4 +329,4 @@ h6,
 .testimonial-carousel .owl-item img {
     width: 120px;
     height: 120px;
-}
+} */

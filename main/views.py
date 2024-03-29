@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from .models import Patient
+from .models import Patient,Doctor,Department
 from .forms import PatientForm
 from django. contrib import messages
 import time
@@ -9,13 +9,95 @@ from django.db.models import Q
 # Create your views here.
 def home(request):
     data = Patient.objects.all()
+    departmens = Department.objects.all()
     if "q" in request.GET:
         q = request.GET['q']
         data = Patient.objects.filter(Q(full_name__icontains=q) | Q(mobile_no__icontains=q))
 
-    
-    return render(request,'home.html',{'data':data})
 
+   
+    departments = Department.objects.all()
+    doctors = Doctor.objects.all()
+
+    # Filter doctors based on selected department
+     
+
+    if request.method == 'POST':
+        form = PatientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "patient has been added.")
+            time.sleep(1)
+            return redirect('home')  
+    else:
+        form = PatientForm()
+    
+    return render(request,'home.html',{'data':data, 'form': form,'departments': departments, 'doctors': doctors})
+
+def doctor_list(request):
+    departments = Department.objects.all()
+    doctors = Doctor.objects.all()
+
+    # Filter doctors based on selected department
+    department_id = request.GET.get('department')
+    if department_id:
+        doctors = doctors.filter(department_id=department_id)
+
+    return render(request, 'doctor_list.html', {'departments': departments, 'doctors': doctors})
+
+
+def all_patients(request):
+    data = Patient.objects.all()
+    if "q" in request.GET:
+        q = request.GET['q']
+        data = Patient.objects.filter(Q(full_name__icontains=q) | Q(mobile_no__icontains=q))
+
+       
+    return render(request,'all_patients.html',{'data':data, })
+
+
+
+
+
+def doctors(request):
+    data = Doctor.objects.all()
+    if "q" in request.GET:
+        q = request.GET['q']
+        data = Patient.objects.filter(Q(full_name__icontains=q) | Q(mobile_no__icontains=q))
+
+       
+    return render(request,'doctors.html',{'data':data, })
+
+def about(request):
+    
+   
+
+       
+    return render(request,'about.html')
+
+
+def service(request):
+    
+       
+    return render(request,'service.html',)        
+
+
+
+def testimonial(request):
+    
+       
+    return render(request,'testimonial.html',)  
+
+
+# def appointment(request):
+    
+       
+#     return render(request,'appointment.html',)      
+
+def contact(request):
+    
+       
+    return render(request,'contact.html',) 
 
 def add_patient(request):
     if request.method == 'POST':

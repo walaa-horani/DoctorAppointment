@@ -1,0 +1,34 @@
+{%load static%}
+
+{%include 'main.html'%}
+
+
+
+{% block content %}
+<div class="container mt-5 ">
+  
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Mobile No</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <td>{{ doctor.full_name }}</td>
+                <td>{{ doctor.department }}</td>
+                <td>{{ doctor.mobile_no }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No doctors found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

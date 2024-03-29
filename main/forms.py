@@ -11,7 +11,8 @@ class PatientForm(forms.ModelForm):
             'mobile_no': forms.TextInput(attrs={'class': 'custom-control'}),
             'address': forms.Textarea(attrs={'class': 'custom-control'}),
             'email': forms.EmailInput(attrs={'class': 'custom-control'}),
-            'next_visit_date': forms.DateInput(attrs={'class': 'custom-control'}),
+            "visit_date": forms.DateInput(attrs={'class': 'custom-control'}),
             'detail': forms.Textarea(attrs={'class': 'custom-control'}),
+            'next_visit_date': forms.DateInput(attrs={'class': 'custom-control'}),
             
         }
