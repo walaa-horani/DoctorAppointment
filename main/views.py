@@ -120,7 +120,7 @@ def add_doctor(request):
             form.save()
             messages.success(request, "doctor has been added.")
            
-            return redirect('add_doctor')  
+            return redirect('doctors')  
     else:
         form = DoctorForm()
     return render(request, 'add_doctor.html', {'form': form})
@@ -164,9 +164,15 @@ def delete_patient(request, id):
     
         
     messages.success(request, "Patient has been deleted successfully.")
-    return redirect('home')
+    return redirect('all_patients')
     
-
+def delete_doctor(request, id):
+    doctor = Doctor.objects.filter(id=id).delete()
+    
+    
+        
+    messages.success(request, "Doctor has been deleted successfully.")
+    return redirect('doctors')
 
 def sendEmail(request,id):
     patient = Patient.objects.get(id=id)

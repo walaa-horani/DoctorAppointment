@@ -6,7 +6,7 @@ path('all_patients',views.all_patients, name ='all_patients'),
 path('add_patient',views.add_patient, name ='add_patient'),
 path('doctors',views.doctors, name ='doctors'),
 path('add_doctor',views.add_doctor, name ='add_doctor'),
-
+path('delete_doctor/<int:id>',views.delete_doctor, name ='delete_doctor'),
 path('about',views.about, name ='about'),
 path('doctor_list', views.doctor_list, name='doctor_list'),
 
