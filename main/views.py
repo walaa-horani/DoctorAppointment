@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .models import Patient,Doctor,Department
-from .forms import PatientForm
+from .forms import PatientForm,DoctorForm
 from django. contrib import messages
 import time
 from django.core.mail import send_mail
@@ -105,11 +105,41 @@ def add_patient(request):
         if form.is_valid():
             form.save()
             messages.success(request, "patient has been added.")
-            time.sleep(1)
-            return redirect('home')  
+            # time.sleep(1)
+            return redirect('add_patient')  
     else:
         form = PatientForm()
     return render(request, 'add_patient.html', {'form': form})
+
+
+
+def add_doctor(request):
+    if request.method == 'POST':
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "doctor has been added.")
+           
+            return redirect('add_doctor')  
+    else:
+        form = DoctorForm()
+    return render(request, 'add_doctor.html', {'form': form})
+
+
+def update_doctor(request,id):
+    doctor = Doctor.objects.get(id=id)
+    if request.method == 'POST':
+        form = DoctorForm(request.POST, instance=doctor)  # Pass the instance to the form
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "doctor form has been updated.")
+            time.sleep(1)
+            return redirect('home')  
+    else:
+        form = DoctorForm(instance=doctor)
+    return render(request, 'update_doctor.html', {'form': form})
+
 
 
 def update_patient(request,id):
